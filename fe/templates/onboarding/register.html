@@ -1,0 +1,44 @@
+{% extends "onboarding/base.html" %}
+
+{% load static %}
+
+{% block body%}
+<section class="onboarding-background">
+    <img src="{% static 'img/icon.svg' %}" class="img-fluid" width="50">
+    <p class="splashtext-bottom mt-2 mb-1" id="lets-get">Let’s get you started</p>
+    <div>
+        <div class="span-login server_message_success" id="server_message_success" role="alert"></div>
+        <div class="text-danger server_message_error" id="server_message_error" role="alert"></div>
+        <p id="message_one"  class="text-danger">Sorry! there are empty fields. Kindly fill the form</p> 
+        <p id="message" class="text-danger"></p>  
+        <form class="onboarding_form mt-1" action="#" id="sign_up_form" method="POST" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-part-one">
+                <input type="text" id="firstname"  class="onboarding_form_input form-control" placeholder="First Name">
+                <input type="text" id="lastname"  class="onboarding_form_input form-control" placeholder="Last Name">
+                <input type="text" id="phonenumber"   class="onboarding_form_input form-control" placeholder="Phone Number">
+                <input type="email" id="email"   class="onboarding_form_input form-control" placeholder="Email">
+                <div class="form-group2">
+                    <div style="display: flex; justify-content: left;">
+                        <input type="password" 
+                    class="onboarding_form_input form-control" 
+                    name="password" 
+                    id="password"
+                    placeholder="Password"
+                    required
+                    />
+                    <i class="fas fa-eye"  style="margin-left:-13%;margin-top: 6%; color: #ccc;" onclick="showPassword()"></i>
+                    </div>
+                </div>
+                <input type="password" id="confirm_password"   class="onboarding_form_input form-control" placeholder="Confirm Password">
+                  
+                             
+                <input type="submit" value="Create account" class="form-control onboarding-button mt-2 mb-1" id="signup_submit_button">
+            </div>
+                
+            
+            <p class="onboarding_footer mt-2 mb-1 text-center">Already have an account? <span class="span-login"><a href="{% url 'signin' %}">Sign in</span></a></p>
+        </form>
+    </div>
+</section>
+{% endblock %}
