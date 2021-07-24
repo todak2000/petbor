@@ -1,4 +1,5 @@
-base_url = "http://127.0.0.1:8000/api/v1"
+// base_url = "http://127.0.0.1:8000/api/v1"
+base_url = "https://petbor.herokuapp.com/api/v1"
 // SIGN UP API
 $(function(){
     $('#signup_submit_button').on('click', function (e) {
