@@ -38,14 +38,12 @@ def token_required(something):
             return Response(return_data, status=status.HTTP_401_UNAUTHORIZED)
     return wrap
 
-def token_required_transaction(something):
-    def wrap(request,transaction_id):
+def token_required_user_id(something):
+    def wrap(request,user_id):
         try:
-            if request.GET.get('token') != '' and request.GET.get('token') != None:
-                token_passed = request.GET.get('token')
+            if user_id:
                 try:
-                    data = jwt.decode(token_passed,settings.SECRET_KEY, algorithms=['HS256'])
-                    return something(request,data, transaction_id)
+                    return something(request, user_id)
                 except jwt.exceptions.ExpiredSignatureError:
                     return_data = {
                         "error": "1",

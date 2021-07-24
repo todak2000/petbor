@@ -13,4 +13,6 @@ urlpatterns = [
     path("forget_password", views.forget_password_page, name="forget_password"),
     path("reset_password/<id>", views.reset_password_page, name="reset_password"),
 
+    path('user_dashboard/<token>', views.user_dashboard, name='dashboard'),
+
 ]

@@ -114,12 +114,12 @@ $(function(){
                     document.getElementById('server_message_error').innerHTML = response.message;
                 }
                 if(response.success == true && response.status == 200){
-                    sessionStorage.setItem("token", response.token);
+                    // sessionStorage.setItem("token", response.token);
                     sessionStorage.setItem("user_id", response.user_id);
-                    token = sessionStorage.getItem("token");
+                    user_id = sessionStorage.getItem("user_id");
                     console.log(response);
                     // if (response.role == 1){
-                    //     window.location.href = '/client_dashboard/'+token;
+                        window.location.href = '/user_dashboard/'+user_id;
                     // }
                     // else{
                     //     window.location.href = '/sp_dashboard/'+token;
@@ -166,10 +166,10 @@ $(function(){
                     document.getElementById("server_message_error").style.display = "block";
                     setTimeout(function(){ 
                         document.getElementById("server_message_error").style.display = "none"; 
-                        
                     }, 3000);  
                 }
                 else{
+                    window.location.href = '/user_dashboard/'+user_id;
                     // if (response.role == 1){
                     //     window.location.href = '/client_dashboard/'+user_id;
                     // document.getElementById('p_id').innerHTML = user_id;

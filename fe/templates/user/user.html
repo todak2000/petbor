@@ -1,0 +1,38 @@
+{% extends "onboarding/base.html" %}
+{% block body%}
+{% load humanize %}
+{% load static %}
+<section class="home-background">
+  <div class="signout-div">
+    <a href="{% url 'signout' %}" ><img src="{% static 'img/signout.svg' %}" ></a>
+  </div>
+  <div class="name-div mt-5">
+    <h5 id="name">{{data.user_details.firstname}} {{data.user_details.lastname}}</h5>
+    <p id="name-sub">you have</p>
+  </div>
+  <div class="balance-div">
+    <h1 id="balance">&#8358;{{data.user_details.balance|floatformat:2|intcomma}}</h1>
+  </div>
+  <div class="balance-div mt-5">
+      <div class="card p-3 mr-3">
+        <img src="{% static 'img/recharge.svg' %}" class="img-fluid" >
+
+      </div>
+      <div class="card p-3 ml-2">
+        <img src="{% static 'img/data.png' %}" class="img-fluid" >
+      
+      </div>
+  </div>
+</section>
+<!-- <footer class="footer">
+  <a >
+    <img src="{% static 'img/homeActive.svg' %}" >
+  </a>
+  <a id="{{email}}" onClick="snap(this.id)">
+    <img src="{% static 'img/snap.svg' %}" >
+  </a>
+  <a id="{{email}}" onClick="market(this.id)">
+    <img src="{% static 'img/market.svg' %}" >
+  </a>
+</footer> -->
+{% endblock %}

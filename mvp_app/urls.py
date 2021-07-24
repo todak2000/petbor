@@ -11,6 +11,8 @@ urlpatterns = [
     path('v1/forgot_password',views.forgot_password),
     path('v1/confirm_user_password',views.confirm_user_password),
     path('v1/change_password',views.change_password),
+
+    path('v1/dashboard/<user_id>',views.dashboard),
 ]
 
 

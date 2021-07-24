@@ -442,3 +442,54 @@ def signin(request):
             "message": str(e)
         }
     return Response(return_data)
+
+@api_view(["GET"])
+# @autentication.token_required_user_id
+def dashboard(request,user_id):
+    try:
+        # user_id = decrypedToken['user_id']
+        if user_id != None and user_id != '':
+            #get user info
+            user_data = User.objects.get(user_id=user_id)
+            # userTransactions=Transaction.objects.filter(Q(from_id__icontains=user_id) | Q(to_id__icontains=user_id)).order_by('-date_added')[:20]
+            # num = len(userTransactions)
+            # userTransactionsList = []
+            # for i in range(0,num):
+            #     date_added = userTransactions[i].date_added
+            #     transaction_type  = userTransactions[i].transaction_type
+            #     amount  = userTransactions[i].amount 
+            #     transaction_message = userTransactions[i].transaction_message
+            #     to_json = {
+            #         "transaction_type": transaction_type,
+            #         "transaction_message": transaction_message,
+            #         "amount": amount,
+            #         "date_added": date_added.strftime('%Y-%m-%d')
+            #     }
+            #     userTransactionsList.append(to_json)
+            return_data = {
+                "success": True,
+                "status" : 200,
+                "message": "Successfull",
+                # "transaction": userTransactionsList,
+                "user_details": 
+                    {
+                        "firstname": f"{user_data.firstname}",
+                        "lastname": f"{user_data.lastname}",
+                        "email": f"{user_data.email}",
+                        "phonenumber": f"{user_data.phone}",
+                        "balance": f"{user_data.walletBalance}",
+                    }
+            }
+        else:
+            return_data = {
+                "success": False,
+                "status" : 201,
+                "message": "Invalid Parameter"
+            }
+    except Exception as e:
+        return_data = {
+            "success": False,
+            "status" : 201,
+            "message": str(e)
+        }
+    return Response(return_data)
